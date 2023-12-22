@@ -1,4 +1,5 @@
 using DesignPatterns.AbstarctFactoryPattern.AbstractFactory;
+using DesignPatterns.Builder;
 using DesignPatterns.FactoryPattern;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace DesignPatterns.Controllers
         private readonly ILogger<DesignPatternController> _logger;
         private IDeviceFactory _deviceFactory;
         private IVehicleFactory _vehicleFactory;
+        private IDirector _director;
 
         public DesignPatternController(ILogger<DesignPatternController> logger)
         {
@@ -41,6 +43,16 @@ namespace DesignPatterns.Controllers
             //bikeType.GetDetails();
 
         }
-        
+
+
+        [HttpGet, Route("/pattern/builder", Name = "Builder")]
+        public async Task<IActionResult> FactoryPatternClient([FromServices] IDirector director)
+        {
+            _director = director;
+
+            _director.BuildHouse();
+
+        }
+
     }
 }

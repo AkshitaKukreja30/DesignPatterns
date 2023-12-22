@@ -2,6 +2,8 @@ using DesignPatterns.AbstarctFactoryPattern;
 using DesignPatterns.AbstarctFactoryPattern.AbstractFactory;
 using DesignPatterns.AbstarctFactoryPattern.ConcreteFactories;
 using DesignPatterns.AbstarctFactoryPattern.ConcreteProducts;
+using DesignPatterns.Builder;
+using DesignPatterns.Builder.ConcreteBuilders;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.FactoryPattern.ConcreteCreatorClasses;
 
@@ -68,8 +70,8 @@ builder.Services.AddTransient<Func<string, ICar>>(serviceProvider => vehicleType
     }
 });
 
-
-
+builder.Services.AddTransient<IBuilder, LuxuryHouse>();
+builder.Services.AddTransient<IDirector, Director>();
 
 var app = builder.Build();
 
