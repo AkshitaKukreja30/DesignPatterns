@@ -1,6 +1,7 @@
 using DesignPatterns.AbstarctFactoryPattern.AbstractFactory;
 using DesignPatterns.Builder;
 using DesignPatterns.FactoryPattern;
+using DesignPatterns.Structural.Adapter;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns.Controllers
@@ -13,6 +14,7 @@ namespace DesignPatterns.Controllers
         private IDeviceFactory _deviceFactory;
         private IVehicleFactory _vehicleFactory;
         private IDirector _director;
+        private ITarget _target;
 
         public DesignPatternController(ILogger<DesignPatternController> logger)
         {
@@ -52,6 +54,18 @@ namespace DesignPatterns.Controllers
 
             _director.BuildHouse();
 
+            return Ok();
+
+        }
+
+
+
+        [HttpGet, Route("/pattern/adapter", Name = "Adapter")]
+        public async Task<IActionResult> AdapterPatternClient([FromServices] ITarget target)
+        {
+            _target = target;
+
+            return Ok(_target.GetRequest());
         }
 
     }

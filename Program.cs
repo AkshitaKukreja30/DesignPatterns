@@ -6,6 +6,7 @@ using DesignPatterns.Builder;
 using DesignPatterns.Builder.ConcreteBuilders;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.FactoryPattern.ConcreteCreatorClasses;
+using DesignPatterns.Structural.Adapter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,6 +73,11 @@ builder.Services.AddTransient<Func<string, ICar>>(serviceProvider => vehicleType
 
 builder.Services.AddTransient<IBuilder, LuxuryHouse>();
 builder.Services.AddTransient<IDirector, Director>();
+
+
+builder.Services.AddTransient<ITarget, MyAdapter>();
+builder.Services.AddTransient<ISource,Source>();
+
 
 var app = builder.Build();
 
