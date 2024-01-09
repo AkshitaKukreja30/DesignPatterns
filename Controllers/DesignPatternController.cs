@@ -2,6 +2,8 @@ using DesignPatterns.AbstarctFactoryPattern.AbstractFactory;
 using DesignPatterns.Builder;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.Structural.Adapter;
+using DesignPatterns.Structural.Decorator;
+using DesignPatterns.Structural.DecoratorPattern.Decorators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns.Controllers
@@ -15,6 +17,8 @@ namespace DesignPatterns.Controllers
         private IVehicleFactory _vehicleFactory;
         private IDirector _director;
         private ITarget _target;
+
+        private HazelnutCoffeeDecorator _hazelnutCoffeeDecorator;
 
         public DesignPatternController(ILogger<DesignPatternController> logger)
         {
@@ -59,7 +63,6 @@ namespace DesignPatterns.Controllers
         }
 
 
-
         [HttpGet, Route("/pattern/adapter", Name = "Adapter")]
         public async Task<IActionResult> AdapterPatternClient([FromServices] ITarget target)
         {
@@ -68,5 +71,13 @@ namespace DesignPatterns.Controllers
             return Ok(_target.GetRequest());
         }
 
+
+        [HttpGet, Route("/pattern/decorator", Name = "Decorator")]
+        public async Task<IActionResult> DecoratorPatternClient([FromServices] HazelnutCoffeeDecorator coffee)
+        {
+            _hazelnutCoffeeDecorator = coffee;
+
+            return Ok(_hazelnutCoffeeDecorator.Cost());
+        }
     }
 }
