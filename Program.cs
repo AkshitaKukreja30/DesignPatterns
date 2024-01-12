@@ -7,6 +7,10 @@ using DesignPatterns.Builder.ConcreteBuilders;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.FactoryPattern.ConcreteCreatorClasses;
 using DesignPatterns.Structural.Adapter;
+using DesignPatterns.Structural.Bridge.Abstraction;
+using DesignPatterns.Structural.Bridge.Abstraction.RefinedAbstraction;
+using DesignPatterns.Structural.Bridge.Implementation.ConcreteImplementors;
+using DesignPatterns.Structural.Bridge.Implementation.Interface;
 using DesignPatterns.Structural.Decorator;
 using DesignPatterns.Structural.Decorator.Concrete.BaseComponent;
 using DesignPatterns.Structural.DecoratorPattern.Decorators;
@@ -83,6 +87,11 @@ builder.Services.AddTransient<CaramelCoffeeDecorator>();
 
 builder.Services.AddTransient<ISource, Source>();
 builder.Services.AddTransient<ITarget, MyAdapter>();
+
+builder.Services.AddTransient<IDevice, TV>();
+builder.Services.AddTransient<AdvancedRemoteControl>();
+builder.Services.AddTransient<BasicRemoteControl>();
+
 
 
 var app = builder.Build();

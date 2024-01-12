@@ -2,6 +2,8 @@ using DesignPatterns.AbstarctFactoryPattern.AbstractFactory;
 using DesignPatterns.Builder;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.Structural.Adapter;
+using DesignPatterns.Structural.Bridge.Abstraction.RefinedAbstraction;
+using DesignPatterns.Structural.Bridge.Implementation.Interface;
 using DesignPatterns.Structural.Decorator;
 using DesignPatterns.Structural.DecoratorPattern.Decorators;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +19,9 @@ namespace DesignPatterns.Controllers
         private IVehicleFactory _vehicleFactory;
         private IDirector _director;
         private ITarget _target;
+        private IDevice _device;
+
+        private AdvancedRemoteControl _advancedRemoteControl;
 
         private HazelnutCoffeeDecorator _hazelnutCoffeeDecorator;
 
@@ -78,6 +83,15 @@ namespace DesignPatterns.Controllers
             _hazelnutCoffeeDecorator = coffee;
 
             return Ok(_hazelnutCoffeeDecorator.Cost());
+        }
+
+
+        [HttpGet, Route("/pattern/bridge", Name = "Bridge")]
+        public async Task<IActionResult> BridgePatternClient([FromServices] AdvancedRemoteControl advancedRemoteControl)
+        {
+           _advancedRemoteControl = advancedRemoteControl;
+
+            return Ok(_advancedRemoteControl.TurnOn());
         }
     }
 }
