@@ -12,3 +12,17 @@ This Mediator is a middle interface and class implemetation where we inject Sour
 
 
 Bridge: 
+
+--------------------
+
+Creational:
+
+Factory: The Factory Pattern is a design pattern used to create objects. Instead of directly instantiating objects using the new keyword in your code, 
+you use a "factory" class or method to create those objects. 
+This helps you delegate the creation process, making your code more flexible and easier to maintain.
+Client -> INotificationFactory; NotificationFactory decides which NotificationService to instantiate and creates SMS/ Email Notif
+
+
+Abstract Factory:
+When you need to create families of related objects: Use this pattern when you have multiple groups of products (objects)
+that are related and should be created together.
