@@ -31,6 +31,11 @@ builder.Services.AddTransient<IDeviceFactory, DeviceFactory>();
 builder.Services.AddTransient<ScannerProcessor>();
 builder.Services.AddTransient<InjectorProcessor>();
 
+
+builder.Services.AddTransient<INotificationFactory, NotificationFactory>();
+builder.Services.AddTransient<SmsNotification>();
+builder.Services.AddTransient<EmailNotification>();
+
 //To Resolve Dependencies at run time as per the DeviceTypes
 builder.Services.AddTransient<Func<string, IDeviceProcessor>>(serviceProvider => deviceType =>
 {

@@ -15,6 +15,7 @@ namespace DesignPatterns.Controllers
     public class DesignPatternController : ControllerBase
     {
         private readonly ILogger<DesignPatternController> _logger;
+        private INotificationFactory _notificationFactory;
         private IDeviceFactory _deviceFactory;
         private IVehicleFactory _vehicleFactory;
         private IDirector _director;
@@ -31,7 +32,7 @@ namespace DesignPatterns.Controllers
         }
 
 
-        [HttpGet, Route("/pattern/factory/{deviceType}", Name = "FactoryApi")]
+        [HttpGet, Route("/pattern/factory/1/device/{deviceType}", Name = "FactoryApi")]
         public async Task<IActionResult> FactoryPatternClient([FromServices] IDeviceFactory deviceFactory, [FromRoute] string deviceType)
         {
             _deviceFactory = deviceFactory;
@@ -39,6 +40,16 @@ namespace DesignPatterns.Controllers
             var device = _deviceFactory.GetDevice(deviceType);
 
             return Ok(device.Execute());
+        }
+
+        [HttpGet, Route("/pattern/factory/2/notification{notificationType}", Name = "FactoryApiv2")]
+        public async Task<IActionResult> FactoryPatternClientV2([FromServices] INotificationFactory notificationFactory, [FromRoute] string notificationType)
+        {
+            _notificationFactory = notificationFactory;
+
+            var device = notificationFactory.CreateNotificationService(notificationType);
+
+            return Ok(device.SendNotification("HEYYYY"));
         }
 
 

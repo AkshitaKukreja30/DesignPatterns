@@ -1,0 +1,14 @@
+﻿Structural:
+
+Decorator: 
+Take base and build on top. Simple Coffee + Hazelnut Syrup
+Take ICoffee as a dependency and also implemenet ICoffee interface in decorators, adding the functionality in the method declaration provided
+
+Adapter: 
+Response -> XML -> JSON
+Response -> XML -> CSV
+SOURCE -> MEDIATOR -> TARGET
+This Mediator is a middle interface and class implemetation where we inject Source and give Target.
+
+
+Bridge: 
