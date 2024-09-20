@@ -1,6 +1,6 @@
-using DesignPatterns.AbstarctFactoryPattern.AbstractFactory;
-using DesignPatterns.Builder;
-using DesignPatterns.FactoryPattern;
+using DesignPatterns.Creational.AbstarctFactoryPattern.AbstractFactory;
+using DesignPatterns.Creational.Builder.Director;
+using DesignPatterns.Creational.FactoryPattern.FactoryInterface;
 using DesignPatterns.Structural.Adapter;
 using DesignPatterns.Structural.Bridge.Abstraction.RefinedAbstraction;
 using DesignPatterns.Structural.Bridge.Implementation.Interface;

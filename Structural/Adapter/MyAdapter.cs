@@ -1,7 +1,7 @@
 ﻿namespace DesignPatterns.Structural.Adapter
 {
     // The Adapter makes the Adaptee's interface compatible with the Target's
-    // interface by making conversions/ manipoulations as per the need
+    // interface by making conversions/ manipulations as per the need
 
     public class MyAdapter : ITarget
     {
