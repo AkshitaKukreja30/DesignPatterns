@@ -1,3 +1,6 @@
+using DesignPatterns.Behavioral.ObserverPattern;
+using DesignPatterns.Behavioral.ObserverPattern.Observers;
+using DesignPatterns.Behavioral.ObserverPattern.Subject;
 using DesignPatterns.Creational.AbstarctFactoryPattern.AbstractFactory;
 using DesignPatterns.Creational.AbstarctFactoryPattern.AbstractProductInterfaces;
 using DesignPatterns.Creational.AbstarctFactoryPattern.ConcreteFactories;
@@ -100,6 +103,10 @@ builder.Services.AddTransient<IDevice, TV>();
 builder.Services.AddTransient<AdvancedRemoteControl>();
 builder.Services.AddTransient<BasicRemoteControl>();
 
+builder.Services.AddSingleton<ISubject, WeatherStation>();
+builder.Services.AddSingleton<IObserver, PhoneDisplay>();
+builder.Services.AddSingleton<IObserver, WebDisplay>();
+builder.Services.AddSingleton<WeatherClientService>();
 
 
 var app = builder.Build();

@@ -1,3 +1,4 @@
+using DesignPatterns.Behavioral.ObserverPattern;
 using DesignPatterns.Creational.AbstarctFactoryPattern.AbstractFactory;
 using DesignPatterns.Creational.Builder.Director;
 using DesignPatterns.Creational.FactoryPattern.FactoryInterface;
@@ -21,6 +22,7 @@ namespace DesignPatterns.Controllers
         private IDirector _director;
         private ITarget _target;
         private IDevice _device;
+        private WeatherClientService _weatherClientService;
 
         private AdvancedRemoteControl _advancedRemoteControl;
 
@@ -103,6 +105,17 @@ namespace DesignPatterns.Controllers
            _advancedRemoteControl = advancedRemoteControl;
 
             return Ok(_advancedRemoteControl.TurnOn());
+        }
+
+
+        [HttpGet, Route("/pattern/behavioral/observer", Name = "Observer")]
+        public async Task<IActionResult> ObserverPattern([FromServices] WeatherClientService weatherClientService)
+        {
+            _weatherClientService = weatherClientService;
+
+            _weatherClientService.UpdateWeatherData(25.3f, 65.2f);
+
+            return Ok();
         }
     }
 }

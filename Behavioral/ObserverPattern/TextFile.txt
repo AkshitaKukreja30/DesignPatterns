@@ -1,0 +1,10 @@
+﻿The Observer pattern is a behavioral design pattern that defines a one-to-many dependency between objects, so that when one object (subject) changes state, all its dependents (observers) are notified and updated automatically. 
+
+Example: Weather Station (Observable) and Devices (Observers)
+In this example:
+
+A WeatherStation acts as the Subject (Observable), providing weather data.
+PhoneDisplay and WebDisplay are the Observers that display weather updates when notified.
+
+------------------------------------------------------------------------------------------
+
