@@ -50,6 +50,7 @@ Observer :
 The Observer pattern is a behavioral design pattern that defines a one-to-many dependency between objects, so that when one object (subject) changes state, all its dependents (observers) are notified and updated automatically.
 
 Chain of Responsibility: 
+Middleware in ASP.NET Core can be considered an example of the Chain of Responsibility pattern. Each middleware component can inspect, modify, or short-circuit a request and then either pass it on to the next middleware in the pipeline or terminate the request processing.
 
 
 ----------------------------------
